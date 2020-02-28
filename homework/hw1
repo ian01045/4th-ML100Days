@@ -1,0 +1,45 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import math
+
+
+w = 3
+b = 0.5
+
+x_lin = np.linspace(0, 100, 101)
+
+y = (x_lin + np.random.randn(101) * 5) * w + b
+
+
+plt.plot(x_lin, y, 'b.', label = 'data points')
+plt.title("This Graph Title")
+plt.legend(loc = 'lower right')
+plt.show()
+
+
+y_hat= x_lin * w + b
+plt.plot(x_lin,y,'b.',label='data')
+plt.plot(x_lin,y_hat,'r-',label='prediction')
+plt.title("Assume we have data points(And the prediction)")
+plt.legend(loc='upper left')
+plt.show()
+
+
+def mean_absolute_error(y,yp):
+    mae = MAE = sum(abs(y - yp)) / len(y)
+    return mae
+ 
+MAE = mean_absolute_error(y, y_hat)
+print("The Mean absolute error is %.3f" % (MAE))
+
+
+# ---------作業-均方差----------
+def mean_square_error(y,yp):
+    mse = MSE = math.sqrt(sum((y-yp)**2)/len(y))
+    return mse
+
+MSE = mean_square_error(y,y_hat)
+print("The Mean Square Error is %.3f" %(MSE))
+
+test
+
